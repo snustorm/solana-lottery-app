@@ -1,3 +1,6 @@
+<img width="1244" alt="截屏2024-10-30 20 08 40" src="https://github.com/user-attachments/assets/4c2e23c3-c111-4e13-863c-5e2513d36d75">
+
+
 This is a clone but more refined version of solana lottery app taught by Clever Programmer (youtube video links: https://www.youtube.com/watch?v=uIQDNVbaQn8).
 
 Key Difference:
