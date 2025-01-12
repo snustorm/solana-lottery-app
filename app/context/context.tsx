@@ -61,6 +61,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
+    
     const { connected, publicKey } = useWallet();
     const { connection } = useConnection();
     const wallet = useAnchorWallet();
