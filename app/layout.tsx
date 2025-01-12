@@ -1,16 +1,10 @@
-import { useMemo } from 'react';
-import localFont from "next/font/local";
 import "./globals.css";
-
+import localFont from "next/font/local";
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // Mak
-
-
+import 'react-toastify/dist/ReactToastify.css'; 
 import AppWalletProvider from "@/app/components/wallet/AppWalletProvider";
-
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer"
-
 import { AppProvider } from './context/context';
 
 

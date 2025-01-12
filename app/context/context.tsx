@@ -1,10 +1,9 @@
 'use client'
 
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { BN, Wallet } from "@project-serum/anchor";
+import { BN, Program } from "@project-serum/anchor";
 import { SystemProgram, LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react";
-import { bs58 } from "@project-serum/anchor/dist/cjs/utils/bytes";
 import { toast } from 'react-toastify';
 
 
@@ -16,16 +15,13 @@ import {
     getTotalPrize,
 } from "../components/utils/program";
 
-import { confirmTx, mockWallet } from "../components/utils/helper";
-import { TICKET_SEED } from "../components/utils/constants";
-
-//import toast from "react-hot-toast";
+import { confirmTx } from "../components/utils/helper";
 
 // Define the shape of your context data
 interface AppContextType {
     connected: boolean;
     publicKey: string | null;
-    program: any | null;
+    program: Program | null;
     isMasterInitialized: boolean;
     lotteryId: number;
     lotteryPot: number,
@@ -212,7 +208,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
             }
             
         } catch (err) {
-            toast.error("Error occurred while buying a ticket");
+            console.error("Error occurred while buying a ticket:", err);
         }
     }
 
@@ -236,6 +232,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
             toast.success("Picked a winner!");
 
         } catch(err) {
+            console.error("Error occurred while buying a ticket:", err);
             toast.error("Error occurred while picking a winner");
         }
     }
@@ -252,7 +249,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
                 break
             
             const LotteryAddress = await getLotteryAddress(id)
-            const lottery = await program?.account.lottery.fetch(LotteryAddress);
+            const lottery = (await program?.account.lottery.fetch(LotteryAddress)) as Lottery;
             
             if(lottery){
                 
@@ -299,7 +296,8 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
                 toast.success("Claim the prize complete!");
 
         } catch (err) {
-            toast.error("Error occurred while claim prize");
+            console.error("Error occurred while buying a ticket:", err);
+            toast.error("Error occurred while claim prize: ");
         }
     }
 

@@ -1,23 +1,16 @@
 'use client'
 
-import { PublicKey } from "@solana/web3.js";
-import { useState, useEffect } from "react";
 import { useAppContext } from "../context/context";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrophy } from "@fortawesome/free-solid-svg-icons";
 import { WalletButton } from "@/app/components/wallet/AppWalletProvider";
-import { useWallet } from "@solana/wallet-adapter-react";
 import { shortenPk } from "./utils/helper";
-
-
 
 export default function LotteryCard() {
 
     const {
         connected,
-        publicKey,
-        program,
         isMasterInitialized,
         lotteryId,
         lotteryPot,

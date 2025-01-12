@@ -1,6 +1,3 @@
-import Image from "next/image";
-
-
 import LotteryCard from '@/app/components/LotteryCard';
 import LotteryHistory from '@/app/components/Table';
 
